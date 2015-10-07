@@ -28,7 +28,8 @@ public class MeterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCabMeter = CabMeter.getInstance(new CabFare(
+        mCabMeter = CabMeter.getInstance();
+        mCabMeter.setCabFare(new CabFare(
                 "Sample Operator",
                 "Delhi",
                 "Mini",
@@ -37,24 +38,28 @@ public class MeterFragment extends Fragment {
                 4f,
                 50f
         ));
-        mFareListener = new CabFareChangeListener() {
-            @Override
-            public void onFareChange(Float distance, Float fare, Float time) {
-                // Change view elements here
-            }
-        };
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meter, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_meter, container, false);
+
+        mFareListener = new CabFareChangeListener() {
+            @Override
+            public void onFareChange(Float distance, Float fare, Float time) {
+                // Change view elements here
+            }
+        };
+        mCabMeter.addCabFareChangeListener("meter_fragment", mFareListener);
+        return rootView;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mCabMeter.removeCabFareChangeListener("meter_fragment");
     }
 
     @Override

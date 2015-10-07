@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by championswimmer on 7/10/15.
@@ -17,6 +19,7 @@ public class CabMeter {
     public static final String INTENT_EXTRA_TIME = "time";
 
     private static CabMeter cabMeterSingleton;
+    private static HashMap<String, CabFareChangeListener> cabFareChangeListenerMap;
     private CabFare cabFare;
     private Context mContext;
 
@@ -28,15 +31,23 @@ public class CabMeter {
         this.cabFare = cabFare;
     }
 
-    public static CabMeter getInstance(CabFare givenCabFare) {
+    public static CabMeter getInstance() {
         if (cabMeterSingleton == null) {
             cabMeterSingleton = new CabMeter();
+            cabFareChangeListenerMap = new HashMap<>();
         }
-        cabMeterSingleton.setCabFare(givenCabFare);
         return cabMeterSingleton;
     }
 
-    public void startMeter(Context appCtx, CabFareChangeListener cfcl) {
+    public void addCabFareChangeListener (String key, CabFareChangeListener cfcl) {
+        cabFareChangeListenerMap.put(key, cfcl);
+    }
+
+    public void removeCabFareChangeListener (String key) {
+        cabFareChangeListenerMap.remove(key);
+    }
+
+    public void startMeter(Context appCtx) {
         if (mContext == null) {
             mContext = appCtx.getApplicationContext();
         }
