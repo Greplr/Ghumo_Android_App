@@ -21,7 +21,7 @@ import com.greplr.ghumo.R;
 /**
  * Created by naman on 07/10/15.
  */
-public class RideFragment extends Fragment {
+public class FindCabsFragment extends Fragment {
 
     private GoogleMap mMap;
 

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Ghumo</string>
-    <string name="title_activity_main">MainActivity</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="nav_main_find_cabs">Find Cabs</string>
+    <string name="nav_main_meter">Meter</string>
+    <string name="nav_main_estimate">Estimates</string>
 </resources>

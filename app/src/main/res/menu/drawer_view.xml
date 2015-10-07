@@ -7,13 +7,13 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_ride"
-            android:title="Ride" />
+            android:title="@string/nav_main_find_cabs" />
         <item
             android:id="@+id/nav_meter"
-            android:title="Meter" />
+            android:title="@string/nav_main_meter" />
 
         <item
             android:id="@+id/nav_directions"
-            android:title="Estimates" />
+            android:title="@string/nav_main_estimate" />
     </group>
 </menu>

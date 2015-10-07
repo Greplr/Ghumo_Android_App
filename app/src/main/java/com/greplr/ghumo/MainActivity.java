@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.greplr.ghumo.fragments.RideFragment;
+import com.greplr.ghumo.fragments.FindCabsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.getMenu().findItem(R.id.nav_ride).setChecked(true);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new RideFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FindCabsFragment()).commit();
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuItem.getItemId()) {
             case R.id.nav_ride:
-                fragment = new RideFragment();
+                fragment = new FindCabsFragment();
                 break;
         }
 
