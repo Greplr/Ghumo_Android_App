@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.greplr.ghumo.R;
 import com.greplr.libcabmeter.CabFare;
@@ -19,6 +21,9 @@ public class MeterFragment extends Fragment {
 
     CabMeter mCabMeter;
     CabFareChangeListener mFareListener;
+
+    Button startBtn, stopBtn, resetBtn;
+    TextView kmMeter, fareMeter, timeMeter;
 
 
     public MeterFragment() {
@@ -46,10 +51,40 @@ public class MeterFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_meter, container, false);
 
+        kmMeter = (TextView) rootView.findViewById(R.id.meter_km);
+        fareMeter = (TextView) rootView.findViewById(R.id.meter_fare);
+        timeMeter = (TextView) rootView.findViewById(R.id.meter_time);
+
+        startBtn = (Button) rootView.findViewById(R.id.btn_meter_start);
+        stopBtn = (Button) rootView.findViewById(R.id.btn_meter_stop);
+        resetBtn = (Button) rootView.findViewById(R.id.btn_meter_reset);
+
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCabMeter.startMeter(getContext());
+            }
+        });
+
+        stopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCabMeter.stopMeter(getContext());
+            }
+        });
+
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateMeters(0f, 0f, 0f);
+            }
+        });
+
         mFareListener = new CabFareChangeListener() {
             @Override
             public void onFareChange(Float distance, Float fare, Float time) {
                 // Change view elements here
+                updateMeters(distance, fare, time);
             }
         };
         mCabMeter.addCabFareChangeListener("meter_fragment", mFareListener);
@@ -72,6 +107,12 @@ public class MeterFragment extends Fragment {
     public void onPause() {
         super.onPause();
         mFareListener.unregisterListener(getContext());
+    }
+
+    private void updateMeters (Float distance, Float fare, Float time) {
+        kmMeter.setText(distance.toString() + " Km");
+        fareMeter.setText("\u20b9 " + fare.toString());
+        timeMeter.setText(time.toString());
     }
 
 

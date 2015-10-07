@@ -1,9 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.greplr.ghumo.fragments.MeterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/meter_container"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/meter_km"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="000.00 Km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/meter_fare"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="\u20b9 000.00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/meter_time"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="00h:00m:00s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_below="@id/meter_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_meter_start"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="START" />
+        <Button
+            android:id="@+id/btn_meter_stop"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="STOP" />
+        <Button
+            android:id="@+id/btn_meter_reset"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="RESET" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
