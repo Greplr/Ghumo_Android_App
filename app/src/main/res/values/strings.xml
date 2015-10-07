@@ -5,4 +5,7 @@
     <string name="nav_main_find_cabs">Find Cabs</string>
     <string name="nav_main_meter">Meter</string>
     <string name="nav_main_estimate">Estimates</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

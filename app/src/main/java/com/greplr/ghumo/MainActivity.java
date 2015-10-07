@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.greplr.ghumo.fragments.FindCabsFragment;
+import com.greplr.ghumo.fragments.MeterFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         switch (menuItem.getItemId()) {
             case R.id.nav_ride:
                 fragment = new FindCabsFragment();
+                break;
+            case R.id.nav_meter:
+                fragment = new MeterFragment();
                 break;
         }
 
